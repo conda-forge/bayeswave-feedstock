@@ -1,13 +1,15 @@
 {% set name = "bayeswave" %}
-{% set version = "1.0.0" %}
+{% set version = "1.0.2" %}
 
 package:
   name: "{{ name|lower }}"
   version: "{{ version }}"
 
 source:
-  git_url: https://git.ligo.org/lscsoft/{{ name }}.git
-  git_tag: v{{ version }}
+  url: http://software.ligo.org/lscsoft/source/{{ name }}-v{{ version }}.tar.gz
+  sha256: 0c623103b667d00f3cd1234643afcaa48a4f873b87ef0d1238f25832165d05c1
+  patches:
+    - python3.patch
 
 build:
   number: 0
@@ -59,30 +61,30 @@ test:
     - BayesWavePost --help
     - BayesWaveToLALPSD --help
 
-    # check links
-    - conda inspect linkages -p ${PREFIX} ${PKG_NAME}  # [not win]
-    - conda inspect objects -p ${PREFIX} ${PKG_NAME}  # [osx]
-
 outputs:
   - name: bayeswave
 
   - name: bayeswaveutils
     script: install-python.sh
+    build:
+      skip: true  # [py<36]
+      skip_compile_pyc:
+        - bin/*.py
     requirements:
       host:
-        - python 2.7
+        - python
         - pip
       run:
-        - python 2.7
+        - python
         - healpy
         - lalapps
+        - ligo.skymap
         - lscsoft-glue
         - matplotlib-base
         - numpy
         - python-lal
         - python-lalinference
         - setuptools
-        - skyarea
     test:
       imports:
         - bayeswave_pipe
