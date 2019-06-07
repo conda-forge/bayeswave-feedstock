@@ -1,11 +1,18 @@
 #!/bin/bash
 
-pushd ${SRC_DIR}/src
-autoreconf --verbose --force --install
+mkdir -p build
+pushd build
 
-./configure \
-  --prefix=${PREFIX}
+# configure
+cmake ${SRC_DIR} \
+  -DCMAKE_INSTALL_PREFIX=${PREFIX} \
+  -DCMAKE_BUILD_TYPE=Release
 
-make -j ${CPU_COUNT}
-make -j ${CPU_COUNT} check
-make -j ${CPU_COUNT} install
+# build
+cmake --build . -- -j ${CPU_COUNT}
+
+# test
+ctest -VV
+
+# install
+cmake --build . --target install
