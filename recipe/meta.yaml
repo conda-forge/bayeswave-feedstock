@@ -18,7 +18,9 @@ build:
 requirements:
   build:
     - {{ compiler('c') }}
-    - cmake3
+    - cmake
+    - make
+    - pkg-config
   host:
     - fftw
     - gsl
