@@ -20,7 +20,7 @@ requirements:
     - make
     - pkg-config
   host:
-    - fftw
+    - fftw * nompi*
     - gsl
     - lal
     - lalframe
