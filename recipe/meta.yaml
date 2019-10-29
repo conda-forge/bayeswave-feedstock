@@ -1,16 +1,18 @@
 {% set name = "bayeswave" %}
-{% set version = "1.0.3" %}
+{% set version = "1.0.4" %}
 
 package:
   name: "{{ name|lower }}"
   version: "{{ version }}"
 
 source:
-  url: http://software.ligo.org/lscsoft/source/{{ name }}-v{{ version }}.tar.gz
-  sha256: d1ddd66b48a505a8d26550196a234a62e39fb71ddb9d466b98fc3a1f82ece16c
+  url: "http://software.ligo.org/lscsoft/source/{{ name }}-{{ version }}.tar.xz"
+  sha256: 82187eb2724a6130244ccfbdf2a695d834f914f579bfb01cb898924f25d4c66f
 
 build:
-  number: 1
+  error_overdepending: true
+  error_overlinking: true
+  number: 0
   skip: true  # [win]
 
 requirements:
@@ -35,17 +37,17 @@ requirements:
     - lalsimulation
 
 test:
+  requires:
+    - pkg-config
   source_files:
     - test/test-bayeswave.sh
   commands:
-    # run tests
     - bash -ex test/test-bayeswave.sh
-
-    # check scripts
     - BayesWave --help
     - BayesWaveCleanFrame --help
     - BayesWavePost --help
-    - BayesWaveToLALPSD --help
+    #- BayesWaveToLALPSD --help
+    - pkg-config --print-errors --modversion bayeswave
 
 outputs:
   - name: bayeswave
@@ -53,21 +55,23 @@ outputs:
   - name: bayeswaveutils
     script: install-python.sh
     build:
+      error_overdepending: true
+      error_overlinking: true
       skip: true  # [py<36]
       skip_compile_pyc:
         - bin/*.py
     requirements:
       host:
-        - python
         - pip
-      run:
         - python
+      run:
         - healpy
         - lalapps
         - ligo.skymap
         - lscsoft-glue
         - matplotlib-base
         - numpy
+        - python
         - python-lal
         - python-lalinference
         - setuptools
@@ -79,11 +83,11 @@ outputs:
         - bayeswave_pipe --help
         - megasky.py --help
     about:
-      home: https://git.ligo.org/lscsoft/{{ name }}
-      license: GPLv2
-      license_family: GPL
-      license_file: LICENSE
-      summary: Bayesian Inference for Gravitational Wave Bursts and Instrument Glitches
+      home: "https://git.ligo.org/lscsoft/{{ name }}"
+      license: "GPL-2.0-or-later"
+      license_family: "GPL"
+      license_file: "LICENSE"
+      summary: "Python utilities for BayesWave"
       description: |
         A Bayesian algorithm designed to robustly distinguish gravitational
         wave signals from noise and instrumental glitches without relying
@@ -93,11 +97,11 @@ outputs:
         morphology-independent waveform reconstruction.
 
 about:
-  home: https://git.ligo.org/lscsoft/{{ name }}/
-  license: GPLv2
-  license_family: GPL
-  license_file: LICENSE
-  summary: Bayesian Inference for Gravitational Wave Bursts and Instrument Glitches
+  home: "https://git.ligo.org/lscsoft/{{ name }}/"
+  license: "GPL-2.0-or-later"
+  license_family: "GPL"
+  license_file: "LICENSE"
+  summary: "Bayesian Inference for Gravitational Wave Bursts and Instrument Glitches"
   description: |
     A Bayesian algorithm designed to robustly distinguish gravitational wave
     signals from noise and instrumental glitches without relying on any prior
