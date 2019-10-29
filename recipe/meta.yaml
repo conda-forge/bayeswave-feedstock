@@ -10,6 +10,8 @@ source:
   sha256: 82187eb2724a6130244ccfbdf2a695d834f914f579bfb01cb898924f25d4c66f
 
 build:
+  error_overdepending: true
+  error_overlinking: true
   number: 0
   skip: true  # [win]
 
@@ -35,17 +37,17 @@ requirements:
     - lalsimulation
 
 test:
+  requires:
+    - pkg-config
   source_files:
     - test/test-bayeswave.sh
   commands:
-    # run tests
     - bash -ex test/test-bayeswave.sh
-
-    # check scripts
     - BayesWave --help
     - BayesWaveCleanFrame --help
     - BayesWavePost --help
-    - BayesWaveToLALPSD --help
+    #- BayesWaveToLALPSD --help
+    - pkg-config --print-errors --modversion bayeswave
 
 outputs:
   - name: bayeswave
@@ -53,21 +55,23 @@ outputs:
   - name: bayeswaveutils
     script: install-python.sh
     build:
+      error_overdepending: true
+      error_overlinking: true
       skip: true  # [py<36]
       skip_compile_pyc:
         - bin/*.py
     requirements:
       host:
-        - python
         - pip
-      run:
         - python
+      run:
         - healpy
         - lalapps
         - ligo.skymap
         - lscsoft-glue
         - matplotlib-base
         - numpy
+        - python
         - python-lal
         - python-lalinference
         - setuptools
