@@ -1,5 +1,5 @@
 {% set name = "bayeswave" %}
-{% set version = "1.0.4" %}
+{% set version = "1.0.5" %}
 
 package:
   name: "{{ name|lower }}"
@@ -7,7 +7,7 @@ package:
 
 source:
   url: "http://software.ligo.org/lscsoft/source/{{ name }}-{{ version }}.tar.xz"
-  sha256: 82187eb2724a6130244ccfbdf2a695d834f914f579bfb01cb898924f25d4c66f
+  sha256: 1dcf9ccf5457524c909d21467e2614f6ac2f581ca20bd209a5b3408e3f7e9536
 
 build:
   error_overdepending: true
