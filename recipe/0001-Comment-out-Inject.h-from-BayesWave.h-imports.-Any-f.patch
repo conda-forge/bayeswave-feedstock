@@ -1,0 +1,27 @@
+From 71a856e27ed65faf81b97e8b1dce79400ae00710 Mon Sep 17 00:00:00 2001
+From: James Clark <james.clark@ligo.org>
+Date: Fri, 13 Dec 2019 11:43:14 -0800
+Subject: [PATCH] Comment-out Inject.h from BayesWave.h imports.  Any
+ functionality required from this should already be included in
+ LALInferenceReadData()
+
+---
+ src/BayesWave.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/BayesWave.h b/src/BayesWave.h
+index 59392a5..cc92e45 100644
+--- a/src/BayesWave.h
++++ b/src/BayesWave.h
+@@ -50,7 +50,7 @@
+ #include <lal/GenerateInspiral.h>
+ #include <lal/GeneratePPNInspiral.h>
+ #include <lal/SimulateCoherentGW.h>
+-#include <lal/Inject.h>
++//#include <lal/Inject.h>
+ #include <lal/LIGOMetadataTables.h>
+ #include <lal/LIGOMetadataUtils.h>
+ #include <lal/LIGOMetadataInspiralUtils.h>
+-- 
+2.23.0
+
