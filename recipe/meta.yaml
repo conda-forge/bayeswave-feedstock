@@ -8,8 +8,6 @@ package:
 source:
   url: http://software.ligo.org/lscsoft/source/{{ name }}-{{ version }}.tar.xz
   sha256: 4a05266231183c728b6fc1948c4cd0a82e3155e2853cec65d91e2a7cd1e1dd7d
-  patches:
-    - 0001-Comment-out-Inject.h-from-BayesWave.h-imports.-Any-f.patch
 
 build:
   error_overdepending: true
