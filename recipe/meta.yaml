@@ -1,20 +1,20 @@
 {% set name = "bayeswave" %}
-{% set version = "1.0.5" %}
+{% set version = "1.0.6" %}
 
 package:
-  name: "{{ name|lower }}"
-  version: "{{ version }}"
+  name: {{ name|lower }}
+  version: {{ version }}
 
 source:
-  url: "http://software.ligo.org/lscsoft/source/{{ name }}-{{ version }}.tar.xz"
-  sha256: 1dcf9ccf5457524c909d21467e2614f6ac2f581ca20bd209a5b3408e3f7e9536
+  url: http://software.ligo.org/lscsoft/source/{{ name }}-{{ version }}.tar.xz
+  sha256: 4a05266231183c728b6fc1948c4cd0a82e3155e2853cec65d91e2a7cd1e1dd7d
   patches:
     - 0001-Comment-out-Inject.h-from-BayesWave.h-imports.-Any-f.patch
 
 build:
   error_overdepending: true
   error_overlinking: true
-  number: 5
+  number: 0
   skip: true  # [win]
 
 requirements:
@@ -85,11 +85,11 @@ outputs:
         - bayeswave_pipe --help
         - megasky.py --help
     about:
-      home: "https://git.ligo.org/lscsoft/{{ name }}"
-      license: "GPL-2.0-or-later"
-      license_family: "GPL"
-      license_file: "LICENSE"
-      summary: "Python utilities for BayesWave"
+      home: https://git.ligo.org/lscsoft/{{ name }}
+      license: GPL-2.0-or-later
+      license_family: GPL
+      license_file: LICENSE
+      summary: Python utilities for BayesWave
       description: |
         A Bayesian algorithm designed to robustly distinguish gravitational
         wave signals from noise and instrumental glitches without relying
@@ -99,11 +99,11 @@ outputs:
         morphology-independent waveform reconstruction.
 
 about:
-  home: "https://git.ligo.org/lscsoft/{{ name }}/"
-  license: "GPL-2.0-or-later"
-  license_family: "GPL"
-  license_file: "LICENSE"
-  summary: "Bayesian Inference for Gravitational Wave Bursts and Instrument Glitches"
+  home: https://git.ligo.org/lscsoft/{{ name }}/
+  license: GPL-2.0-or-later
+  license_family: GPL
+  license_file: LICENSE
+  summary: Bayesian Inference for Gravitational Wave Bursts and Instrument Glitches
   description: |
     A Bayesian algorithm designed to robustly distinguish gravitational wave
     signals from noise and instrumental glitches without relying on any prior
