@@ -75,7 +75,6 @@ outputs:
         - numpy
         - python
         - python-lal
-        - python-lalinference
         - python-ligo-lw
         - scipy
         - setuptools
