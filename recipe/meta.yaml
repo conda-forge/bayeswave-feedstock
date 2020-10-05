@@ -57,7 +57,6 @@ outputs:
     build:
       error_overdepending: true
       error_overlinking: true
-      skip: true  # [py<36]
       skip_compile_pyc:
         - bin/*.py
     requirements:
@@ -65,8 +64,11 @@ outputs:
         - pip
         - python
       run:
+        - astropy
         - healpy
         - lalapps
+        - ligo-gracedb
+        - ligo-segments
         - ligo.skymap
         - lscsoft-glue
         - matplotlib-base
@@ -74,6 +76,8 @@ outputs:
         - python
         - python-lal
         - python-lalinference
+        - python-ligo-lw
+        - scipy
         - setuptools
     test:
       imports:
