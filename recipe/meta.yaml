@@ -12,7 +12,7 @@ source:
 build:
   error_overdepending: true
   error_overlinking: true
-  number: 0
+  number: 1
   skip: true  # [win]
 
 requirements:
@@ -24,17 +24,17 @@ requirements:
   host:
     - fftw * nompi*
     - gsl
-    - lal
-    - lalframe
-    - lalinference
-    - lalsimulation
+    - liblal
+    - liblalframe
+    - liblalinference
+    - liblalsimulation
   run:
     - fftw
     - gsl
-    - lal
-    - lalframe
-    - lalinference
-    - lalsimulation
+    - liblal
+    - liblalframe
+    - liblalinference
+    - liblalsimulation
 
 test:
   requires:
