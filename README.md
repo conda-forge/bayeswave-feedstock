@@ -5,7 +5,7 @@ Home: https://git.ligo.org/lscsoft/bayeswave/
 
 Package license: GPL-2.0-or-later
 
-Feedstock license: BSD-3-Clause
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/bayeswave-feedstock/blob/master/LICENSE.txt)
 
 Summary: Bayesian Inference for Gravitational Wave Bursts and Instrument Glitches
 
