@@ -42,12 +42,16 @@ test:
   source_files:
     - test/test-bayeswave.sh
   commands:
+    # run integration tests
     - bash -ex test/test-bayeswave.sh
+    # check executables
     - BayesWave --help
     - BayesWaveCleanFrame --help
+    - BayesWaveFpeak --help
     - BayesWavePost --help
-    #- BayesWaveToLALPSD --help
-    - pkg-config --print-errors --modversion bayeswave
+    - BayesWaveToLALPSD --help
+    # sanity check pkg-config file
+    - pkg-config --print-errors --exact-version {{ version }} bayeswave
 
 outputs:
   - name: bayeswave
@@ -80,10 +84,13 @@ outputs:
         - scipy
         - setuptools
     test:
+      requires:
+        - pip
       imports:
         - bayeswave_pipe
         - bayeswave_plot
       commands:
+        - python -m pip check
         - bayeswave_pipe --help
         - megasky.py --help
     about:
