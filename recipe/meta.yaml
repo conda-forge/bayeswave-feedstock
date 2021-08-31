@@ -49,7 +49,6 @@ test:
     - BayesWaveCleanFrame --help
     - BayesWaveFpeak --help
     - BayesWavePost --help
-    - BayesWaveToLALPSD --help
     # sanity check pkg-config file
     - pkg-config --print-errors --exact-version {{ version }} bayeswave
 
