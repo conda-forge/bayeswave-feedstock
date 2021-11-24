@@ -12,7 +12,7 @@ source:
 build:
   error_overdepending: true
   error_overlinking: true
-  number: 0
+  number: 1
   skip: true  # [win]
 
 requirements:
@@ -75,7 +75,7 @@ outputs:
         - ligo-segments
         - ligo.skymap
         - lscsoft-glue
-        - matplotlib-base
+        - matplotlib-base <3.5.0a0
         - numpy
         - python
         - python-lal
