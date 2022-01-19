@@ -82,6 +82,10 @@ outputs:
         - python-ligo-lw
         - scipy
         - setuptools
+      run_constrained:
+        # the last version of ligo.skymap supported on python 3.7
+        # isn't compatible with python-ligo-lw >=1.8.0
+        - python-ligo-lw <1.8.0  # [py<38]
     test:
       requires:
         - pip
