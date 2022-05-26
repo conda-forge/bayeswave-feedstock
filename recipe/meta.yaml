@@ -1,5 +1,5 @@
 {% set name = "bayeswave" %}
-{% set version = "1.0.9" %}
+{% set version = "1.0.10" %}
 
 package:
   name: {{ name|lower }}
@@ -7,12 +7,12 @@ package:
 
 source:
   url: http://software.ligo.org/lscsoft/source/{{ name }}-{{ version }}.tar.xz
-  sha256: 33e35aa8b6ff19d2ad70999275ed1e5ea5dffc6eb11061732d0bcd9c61f81064
+  sha256: e60c2ddac1b69757016df84a4ca5d8e4f4963daacc30efcc29291437dec8f65a
 
 build:
   error_overdepending: true
   error_overlinking: true
-  number: 3
+  number: 0
   skip: true  # [win]
 
 requirements:
@@ -78,7 +78,7 @@ outputs:
         - ligo-segments
         - ligo.skymap
         - lscsoft-glue
-        - matplotlib-base <3.5.0a0
+        - matplotlib-base
         - numpy
         - python
         - python-lal
