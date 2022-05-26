@@ -78,7 +78,7 @@ outputs:
         - ligo-segments
         - ligo.skymap
         - lscsoft-glue
-        - matplotlib-base <3.5.0a0
+        - matplotlib-base
         - numpy
         - python
         - python-lal
