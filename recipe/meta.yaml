@@ -57,11 +57,11 @@ outputs:
 
   - name: bayeswaveutils
     script: install-python.sh
-    # ligo.skymap only built for Python >=3.8 on non-x86_64 Linux
-    skip: true  # [linux and not x86_64 and py<38]
     build:
       error_overdepending: true
       error_overlinking: true
+      # ligo.skymap only built for Python >=3.8 on non-x86_64 Linux
+      skip: true  # [linux and not x86_64 and py<38]
       skip_compile_pyc:
         - bin/*.py
     requirements:
