@@ -100,7 +100,7 @@ outputs:
       commands:
         - python -m pip check
         - bayeswave_pipe --help
-        - megasky.py --help
+        - megaplot.py --help
     about:
       home: https://git.ligo.org/lscsoft/{{ name }}
       license: GPL-2.0-or-later
