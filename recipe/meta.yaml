@@ -69,6 +69,7 @@ outputs:
         - setuptools
       run:
         - astropy
+        - gwpy
         - healpy
         - lalapps
         - ligo-gracedb
@@ -79,6 +80,8 @@ outputs:
         - numpy
         - python
         - python-lal
+        - python-lalframe
+        - python-lalsimulation
         - python-ligo-lw
         - scipy
         - setuptools
