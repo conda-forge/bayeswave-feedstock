@@ -10,12 +10,12 @@ cmake ${CMAKE_ARGS} ${SRC_DIR} \
   -DCMAKE_INSTALL_LIBDIR="lib"
 
 # build
-cmake --build . -- -j ${CPU_COUNT}
+cmake --build . --parallel ${CPU_COUNT} --verbose
 
 # test
 if [[ "${CONDA_BUILD_CROSS_COMPILATION:-}" != "1" || "${CROSSCOMPILING_EMULATOR}" != "" ]]; then
-ctest -VV
+  ctest --verbose --parallel ${CPU_COUNT}
 fi
 
 # install
-cmake --build . --target install
+cmake --build . --parallel ${CPU_COUNT} --verbose --target install
