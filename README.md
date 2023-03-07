@@ -1,11 +1,14 @@
+About bayeswave-feedstock
+=========================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/bayeswave-feedstock/blob/main/LICENSE.txt)
+
 About bayeswave
-===============
+---------------
 
 Home: https://git.ligo.org/lscsoft/bayeswave/
 
 Package license: GPL-2.0-or-later
-
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/bayeswave-feedstock/blob/main/LICENSE.txt)
 
 Summary: Bayesian Inference for Gravitational Wave Bursts and Instrument Glitches
 
@@ -16,12 +19,35 @@ BayesWave produces posterior probability distributions directly on
 gravitational wave signals and instrumental glitches, allowing robust,
 morphology-independent waveform reconstruction.
 
+About bayeswaveutils
+--------------------
+
+Home: https://git.ligo.org/lscsoft/bayeswave
+
+Package license: GPL-2.0-or-later
+
+Summary: Python utilities for BayesWave
+
+A Bayesian algorithm designed to robustly distinguish gravitational
+wave signals from noise and instrumental glitches without relying
+on any prior assumptions of waveform morphology.
+BayesWave produces posterior probability distributions directly on
+gravitational wave signals and instrumental glitches, allowing robust,
+morphology-independent waveform reconstruction.
+
 
 Current build status
 ====================
 
 
-<table>
+<table><tr>
+    <td>Travis</td>
+    <td>
+      <a href="https://app.travis-ci.com/conda-forge/bayeswave-feedstock">
+        <img alt="linux" src="https://img.shields.io/travis/com/conda-forge/bayeswave-feedstock/main.svg?label=Linux">
+      </a>
+    </td>
+  </tr>
     
   <tr>
     <td>Azure</td>
@@ -201,4 +227,5 @@ Feedstock Maintainers
 
 * [@astroclark](https://github.com/astroclark/)
 * [@duncanmmacleod](https://github.com/duncanmmacleod/)
+* [@sophiehourihane](https://github.com/sophiehourihane/)
 
