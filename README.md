@@ -199,4 +199,5 @@ Feedstock Maintainers
 
 * [@astroclark](https://github.com/astroclark/)
 * [@duncanmmacleod](https://github.com/duncanmmacleod/)
+* [@sophiehourihane](https://github.com/sophiehourihane/)
 
