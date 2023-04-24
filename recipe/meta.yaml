@@ -8,6 +8,8 @@ package:
 source:
   url: https://software.igwn.org/sources/source/{{ name }}-{{ version }}.tar.xz
   sha256: c58e74ed391848f973eb5db0c467224274b0da9d09aecea0d9fe946b3c4beabc
+  patches:
+    - 0001-remove-unnecessary-omp-link.patch
 
 build:
   error_overdepending: true
