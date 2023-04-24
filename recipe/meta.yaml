@@ -1,5 +1,5 @@
 {% set name = "bayeswave" %}
-{% set version = "1.0.15" %}
+{% set version = "1.0.16" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://software.igwn.org/sources/source/{{ name }}-{{ version }}.tar.xz
-  sha256: d69c4f45fc419c916093eef30a29925c90a25fcb4394943ca540bf465dc56ca0
+  sha256: c58e74ed391848f973eb5db0c467224274b0da9d09aecea0d9fe946b3c4beabc
 
 build:
   error_overdepending: true
