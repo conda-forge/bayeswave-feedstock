@@ -19,15 +19,19 @@ requirements:
   build:
     - {{ compiler('c') }}
     - cmake >=3.12.0
+    - libgomp  # [linux]
+    - llvm-openmp  # [osx]
     - make
     - pkg-config
   host:
     - fftw * nompi*
     - gsl
+    - libgomp  # [linux]
     - liblal
     - liblalframe
     - liblalinference
     - liblalsimulation
+    - llvm-openmp  # [osx]
   run:
     - fftw
     - gsl
