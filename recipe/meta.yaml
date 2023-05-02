@@ -1,5 +1,5 @@
 {% set name = "bayeswave" %}
-{% set version = "1.0.16" %}
+{% set version = "1.1.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://software.igwn.org/sources/source/{{ name }}-{{ version }}.tar.xz
-  sha256: c58e74ed391848f973eb5db0c467224274b0da9d09aecea0d9fe946b3c4beabc
+  sha256: 1fa1f24313157d4e5bb229f3f796b662e1a6d698d1d6aa9428b34696ab1768f1
   patches:
     - 0001-remove-unnecessary-omp-link.patch
 
@@ -94,10 +94,6 @@ outputs:
         - python-ligo-lw
         - scipy
         - setuptools
-      run_constrained:
-        # the last version of ligo.skymap supported on python 3.7
-        # isn't compatible with python-ligo-lw >=1.8.0
-        - python-ligo-lw <1.8.0  # [py<38]
     test:
       requires:
         - pip
@@ -106,6 +102,7 @@ outputs:
         - bayeswave_plot
       commands:
         - python -m pip check
+        - python -m pip show BayesWaveUtils
         - bayeswave_pipe --help
     about:
       home: https://git.ligo.org/lscsoft/{{ name }}
