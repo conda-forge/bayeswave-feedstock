@@ -1,5 +1,5 @@
 {% set name = "bayeswave" %}
-{% set version = "1.1.0" %}
+{% set version = "1.1.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://software.igwn.org/sources/source/{{ name }}-{{ version }}.tar.xz
-  sha256: 1fa1f24313157d4e5bb229f3f796b662e1a6d698d1d6aa9428b34696ab1768f1
+  sha256: 5fb8462ba987ee0b4945078896ac6ea38b245fe113bd448a3b52e36b57c7d568
   patches:
     - 0001-remove-unnecessary-omp-link.patch
 
