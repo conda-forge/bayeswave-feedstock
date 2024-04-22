@@ -14,12 +14,13 @@ source:
 build:
   error_overdepending: true
   error_overlinking: true
-  number: 0
+  number: 1
   skip: true  # [win]
 
 requirements:
   build:
     - {{ compiler('c') }}
+    - {{ stdlib("c") }}
     - cmake >=3.12.0
     - libgomp  # [linux]
     - llvm-openmp  # [osx]
