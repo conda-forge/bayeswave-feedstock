@@ -14,12 +14,14 @@ source:
 build:
   error_overdepending: true
   error_overlinking: true
+  ignore_run_exports:
+    - libgcc  # [linux]
   number: 2
   skip: true  # [win]
 
 requirements:
   build:
-    - {{ compiler('c') }}
+    - {{ compiler("c") }}
     - {{ stdlib("c") }}
     - cmake >=3.12.0
     - libgomp  # [linux]
@@ -27,15 +29,6 @@ requirements:
     - make
     - pkg-config
   host:
-    - fftw * nompi*
-    - gsl
-    - libgomp  # [linux]
-    - liblal
-    - liblalframe
-    - liblalinference
-    - liblalsimulation
-    - llvm-openmp  # [osx]
-  run:
     - fftw
     - gsl
     - liblal
