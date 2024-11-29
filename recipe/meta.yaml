@@ -16,7 +16,7 @@ build:
   error_overlinking: true
   ignore_run_exports:
     - libgcc  # [linux]
-  number: 2
+  number: 3
   skip: true  # [win]
 
 requirements:
@@ -71,7 +71,7 @@ outputs:
         - python
         - setuptools
       run:
-        - astropy
+        - astropy-base
         - gwpy
         - healpy
         - lalapps
