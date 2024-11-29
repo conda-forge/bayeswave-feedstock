@@ -12,7 +12,7 @@ source:
 build:
   error_overdepending: true
   error_overlinking: true
-  number: 1
+  number: 2
   skip: true  # [win]
 
 requirements:
@@ -71,7 +71,7 @@ outputs:
         - python
         - setuptools
       run:
-        - astropy
+        - astropy-base
         - gwpy
         - healpy
         - lalapps
