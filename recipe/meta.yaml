@@ -71,7 +71,7 @@ outputs:
         - python
         - setuptools
       run:
-        - astropy
+        - astropy-base
         - gwpy
         - healpy
         - lalapps
