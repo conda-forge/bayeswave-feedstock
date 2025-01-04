@@ -16,7 +16,7 @@ build:
   error_overlinking: true
   ignore_run_exports:
     - libgcc  # [linux]
-  number: 3
+  number: 4
   skip: true  # [win]
 
 requirements:
