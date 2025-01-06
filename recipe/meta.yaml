@@ -97,10 +97,11 @@ outputs:
         - bayeswave_plot
       commands:
         - python -m pip check
+        - python -m pip show BayesWaveUtils
         - bayeswave_pipe --help
         - megasky.py --help
     about:
-      home: https://git.ligo.org/lscsoft/{{ name }}
+      home: https://git.ligo.org/lscsoft/bayeswave
       license: GPL-2.0-or-later
       license_family: GPL
       license_file: LICENSE
@@ -114,7 +115,7 @@ outputs:
         morphology-independent waveform reconstruction.
 
 about:
-  home: https://git.ligo.org/lscsoft/{{ name }}/
+  home: https://git.ligo.org/lscsoft/bayeswave/
   license: GPL-2.0-or-later
   license_family: GPL
   license_file: LICENSE
