@@ -8,3 +8,5 @@ sed -i.orig "s|version=.*|version='${PKG_VERSION}',|g" ./setup.py
 
 # install
 ${PYTHON} -m pip install . -vv
+
+rm -rfv ${PREFIX}/bin/__pycache__
