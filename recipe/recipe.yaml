@@ -102,6 +102,7 @@ outputs:
         - scipy
         - setuptools <82.0.0a0
     tests:
+      # Check metadata and sanity check executables
       - requirements:
           run:
             - pip
@@ -109,7 +110,20 @@ outputs:
           - python -m pip check
           - python -m pip show BayesWaveUtils
           - bayeswave_pipe --help
-      - script: test_bayeswaveutils.sh
+      # If native build, run the test script, otherwise just check imports
+      - if: build_platform == target_platform
+        then:
+          script: test_bayeswaveutils.sh
+        else:
+          python:
+            imports:
+              - bayeswave_pipe
+              - bayeswave_pipe.bayeswave_pipe_utils
+              - bayeswave_plot
+              - bayeswave_plot.BW_Flags
+              - bayeswave_plot.find_trig
+              - bayeswave_plot.readbwb
+              - bayeswave_plot.wavelets
     about:
       summary: Python utilities for BayesWave
       description: |
