@@ -1,0 +1,158 @@
+schema_version: 1
+
+context:
+  name: bayeswave
+  version: 1.1.1
+
+recipe:
+  name: ${{ name|lower }}
+  version: ${{ version }}
+
+source:
+  url: https://software.igwn.org/sources/source/${{ name }}-${{ version }}.tar.xz
+  sha256: 5fb8462ba987ee0b4945078896ac6ea38b245fe113bd448a3b52e36b57c7d568
+  patches:
+    - patches/0001-remove-unnecessary-omp-link.patch
+    - patches/0002-Update-megaplot-to-be-happy-with-numpy-2.0.patch
+
+build:
+  number: 5
+  skip:
+    - win
+
+outputs:
+  - package:
+      name: bayeswave
+    build:
+      script: build.sh
+    requirements:
+      build:
+        - ${{ compiler("c") }}
+        - ${{ stdlib("c") }}
+        - cmake >=3.12.0
+        - make
+        - pkg-config
+        - if: linux
+          then: libgomp
+        - if: osx
+          then: llvm-openmp
+      host:
+        - fftw
+        - gsl
+        - liblal
+        - liblalframe
+        - liblalinference
+        - liblalsimulation
+      ignore_run_exports:
+        by_name:
+          - if: linux
+            then: libgcc
+    tests:
+      - files:
+          source:
+            - test/test-bayeswave.sh
+        requirements:
+          run:
+            - pkg-config
+        script:
+          # Run the test script
+          - bash -ex test/test-bayeswave.sh
+          # Check executables
+          - BayesWave --help
+          - BayesWaveCleanFrame --help
+          - BayesWaveFpeak --help
+          - BayesWavePost --help
+          # Check pkg-config
+          - pkg-config --print-errors --exact-version ${{ version }} bayeswave
+
+  - package:
+      name: bayeswaveutils
+    build:
+      python:
+        skip_pyc_compilation:
+          - bin/*.py
+      script: build-python.sh
+    requirements:
+      build:
+        - if: build_platform != target_platform
+          then: cross-python_${{ target_platform }}
+        - if: build_platform != target_platform
+          then: python
+      host:
+        - pip
+        - python
+        - setuptools
+      run:
+        - ${{ pin_subpackage("bayeswave", exact=True) }}
+        - astropy-base
+        - gwpy
+        - healpy
+        - lalapps
+        - ligo-gracedb
+        - ligo-segments
+        - ligo.skymap
+        - lscsoft-glue
+        - matplotlib-base
+        - numpy
+        - python
+        - python-lal
+        - python-lalframe
+        - python-lalsimulation
+        - python-ligo-lw
+        - scipy
+        - setuptools <82.0.0a0
+    tests:
+      # Check metadata and sanity check executables
+      - requirements:
+          run:
+            - pip
+        script:
+          - python -m pip check
+          - python -m pip show BayesWaveUtils
+          - bayeswave_pipe --help
+      # If native build, run the test script, otherwise just check imports
+      - if: build_platform == target_platform
+        then:
+          script: test_bayeswaveutils.sh
+        else:
+          python:
+            imports:
+              - bayeswave_pipe
+              - bayeswave_pipe.bayeswave_pipe_utils
+              - bayeswave_plot
+              - bayeswave_plot.BW_Flags
+              - bayeswave_plot.find_trig
+              - bayeswave_plot.readbwb
+              - bayeswave_plot.wavelets
+    about:
+      summary: Python utilities for BayesWave
+      description: |
+        A Bayesian algorithm designed to robustly distinguish gravitational
+        wave signals from noise and instrumental glitches without relying
+        on any prior assumptions of waveform morphology.
+
+        BayesWave produces posterior probability distributions directly on
+        gravitational wave signals and instrumental glitches, allowing robust,
+        morphology-independent waveform reconstruction.
+
+about:
+  summary: Bayesian Inference for Gravitational Wave Bursts and Instrument Glitches
+  description: |
+    A Bayesian algorithm designed to robustly distinguish gravitational wave
+    signals from noise and instrumental glitches without relying on any prior
+    assumptions of waveform morphology.
+
+    BayesWave produces posterior probability distributions directly on
+    gravitational wave signals and instrumental glitches, allowing robust,
+    morphology-independent waveform reconstruction.
+  homepage: https://git.ligo.org/lscsoft/bayeswave/
+  documentation: https://lscsoft.docs.ligo.org/bayeswave/
+  repository: https://git.ligo.org/lscsoft/bayeswave
+  license: GPL-2.0-or-later
+  license_file: LICENSE
+
+extra:
+  recipe-maintainers:
+    - astroclark
+    - duncanmmacleod
+    - sophiehourihane
