@@ -83,6 +83,7 @@ outputs:
         - python
         - setuptools
       run:
+        - ${{ pin_subpackage("bayeswave", exact=True) }}
         - astropy-base
         - gwpy
         - healpy
@@ -99,12 +100,8 @@ outputs:
         - python-lalsimulation
         - python-ligo-lw
         - scipy
-        - setuptools
+        - setuptools <82.0.0a0
     tests:
-      - python:
-          imports:
-            - bayeswave_pipe
-            - bayeswave_plot
       - requirements:
           run:
             - pip
@@ -112,7 +109,7 @@ outputs:
           - python -m pip check
           - python -m pip show BayesWaveUtils
           - bayeswave_pipe --help
-          - megaplot.py --help
+      - script: test_bayeswaveutils.sh
     about:
       summary: Python utilities for BayesWave
       description: |
