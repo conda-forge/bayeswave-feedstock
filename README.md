@@ -13,30 +13,38 @@ Package license: GPL-2.0-or-later
 
 Summary: Bayesian Inference for Gravitational Wave Bursts and Instrument Glitches
 
+Development: https://git.ligo.org/lscsoft/bayeswave
+
+Documentation: https://lscsoft.docs.ligo.org/bayeswave/
+
 A Bayesian algorithm designed to robustly distinguish gravitational wave
 signals from noise and instrumental glitches without relying on any prior
 assumptions of waveform morphology.
+
 BayesWave produces posterior probability distributions directly on
 gravitational wave signals and instrumental glitches, allowing robust,
 morphology-independent waveform reconstruction.
 
-
 About bayeswaveutils
 --------------------
 
-Home: https://git.ligo.org/lscsoft/bayeswave
+Home: https://git.ligo.org/lscsoft/bayeswave/
 
 Package license: GPL-2.0-or-later
 
 Summary: Python utilities for BayesWave
 
+Development: https://git.ligo.org/lscsoft/bayeswave
+
+Documentation: https://lscsoft.docs.ligo.org/bayeswave/
+
 A Bayesian algorithm designed to robustly distinguish gravitational
 wave signals from noise and instrumental glitches without relying
 on any prior assumptions of waveform morphology.
+
 BayesWave produces posterior probability distributions directly on
 gravitational wave signals and instrumental glitches, allowing robust,
 morphology-independent waveform reconstruction.
-
 
 Current build status
 ====================
