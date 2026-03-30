@@ -1,13 +1,14 @@
 #!/bin/bash
 
+set -ex
+
 mkdir -p build
 pushd build
 
 # configure
-cmake ${CMAKE_ARGS} ${SRC_DIR} \
-  -DCMAKE_INSTALL_PREFIX=${PREFIX} \
-  -DCMAKE_BUILD_TYPE=Release \
-  -DCMAKE_INSTALL_LIBDIR="lib"
+cmake \
+  ${CMAKE_ARGS} \
+  ${SRC_DIR}
 
 # build
 cmake --build . --parallel ${CPU_COUNT} --verbose
