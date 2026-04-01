@@ -13,6 +13,7 @@ source:
   sha256: cbb8c798cf3e0428163bd30bea03db5f5f5c0e61984af496be4dbc5bd931eb7f
   patches:
     - patches/0001-remove-unnecessary-omp-link.patch
+    - patches/0003-fix-version-1.1.2
 
 build:
   number: 0
