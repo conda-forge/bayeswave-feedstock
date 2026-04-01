@@ -9,7 +9,7 @@ recipe:
   version: ${{ version }}
 
 source:
-  url: https://software.igwn.org/sources/source/${{ name }}-v${{ version }}.tar.gz
+  url: https://git.ligo.org/lscsoft/${{ name }}/-/archive/v${{ version }}/${{ name }}-v${{ version }}.tar.gz
   sha256: cbb8c798cf3e0428163bd30bea03db5f5f5c0e61984af496be4dbc5bd931eb7f
   patches:
     - patches/0001-remove-unnecessary-omp-link.patch
