@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   name: bayeswave
-  version: 1.1.2
+  version: 1.1.3
 
 recipe:
   name: ${{ name|lower }}
@@ -10,10 +10,10 @@ recipe:
 
 source:
   url: https://git.ligo.org/lscsoft/${{ name }}/-/archive/v${{ version }}/${{ name }}-v${{ version }}.tar.gz
-  sha256: cbb8c798cf3e0428163bd30bea03db5f5f5c0e61984af496be4dbc5bd931eb7f
+  sha256: ff97331d32085d7ab6706d25e7262b94e1397d9dc36643c258ee03b8570ddd35
   patches:
     - patches/0001-remove-unnecessary-omp-link.patch
-    - patches/0003-fix-version-1.1.2
+    - patches/0004-fix-version-1.1.3
 
 build:
   number: 0
