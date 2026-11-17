@@ -72,6 +72,9 @@ outputs:
         skip_pyc_compilation:
           - bin/*.py
       script: build-python.sh
+      skip:
+        # python-ligo-lw not built for Python >=3.14
+        - match(python, ">=3.14")
     requirements:
       build:
         - if: build_platform != target_platform
