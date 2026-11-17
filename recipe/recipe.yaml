@@ -16,7 +16,7 @@ source:
     - patches/0004-fix-version-1.1.3
 
 build:
-  number: 0
+  number: 1
   skip:
     - win
 
@@ -72,12 +72,15 @@ outputs:
         skip_pyc_compilation:
           - bin/*.py
       script: build-python.sh
+      skip:
+        # python-ligo-lw not built for Python >=3.14
+        - match(python, ">=3.14")
     requirements:
       build:
         - if: build_platform != target_platform
-          then: cross-python_${{ target_platform }}
-        - if: build_platform != target_platform
-          then: python
+          then:
+            - cross-python_${{ target_platform }}
+            - python
       host:
         - pip
         - python
@@ -126,14 +129,6 @@ outputs:
               - bayeswave_plot.wavelets
     about:
       summary: Python utilities for BayesWave
-      description: |
-        A Bayesian algorithm designed to robustly distinguish gravitational
-        wave signals from noise and instrumental glitches without relying
-        on any prior assumptions of waveform morphology.
-
-        BayesWave produces posterior probability distributions directly on
-        gravitational wave signals and instrumental glitches, allowing robust,
-        morphology-independent waveform reconstruction.
 
 about:
   summary: Bayesian Inference for Gravitational Wave Bursts and Instrument Glitches
